@@ -46,7 +46,7 @@ class TicketController extends Controller
         $ticket = Ticket::create($request->all());
 
         foreach ($request->input('attachments', []) as $file) {
-            $ticket->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
+            $ticket->addMedia(storage_path('storage/public/' . $file))->toMediaCollection('attachments');
         }
 
         return redirect()->back()->withStatus('Your ticket has been submitted, we will be in touch. You can view ticket status <a href="'.route('tickets.show', $ticket->id).'">here</a>');
