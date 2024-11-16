@@ -34,7 +34,7 @@ class TicketController extends Controller
             'title'         => 'required',
             'content'       => 'required',
             'author_name'   => 'required',
-            'author_email'  => 'required|email',
+            // 'author_email'  => 'required|email',
         ]);
 
         $request->request->add([

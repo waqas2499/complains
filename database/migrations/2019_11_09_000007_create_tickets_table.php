@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
 
             $table->string('author_name')->nullable();
 
-            $table->string('author_email')->nullable();
+            // $table->string('author_email')->nullable();
 
             $table->timestamps();
 
