@@ -28,7 +28,7 @@ class TicketsApiController extends Controller
         $ticket = Ticket::create($request->all());
 
         if ($request->input('attachments', false)) {
-            $ticket->addMedia(storage_path('tmp/uploads/' . $request->input('attachments')))->toMediaCollection('attachments');
+            $ticket->addMedia(storage_path('app/public/uploads/' . $request->input('attachments')))->toMediaCollection('attachments');
         }
 
         return (new TicketResource($ticket))
@@ -49,7 +49,7 @@ class TicketsApiController extends Controller
 
         if ($request->input('attachments', false)) {
             if (!$ticket->attachments || $request->input('attachments') !== $ticket->attachments->file_name) {
-                $ticket->addMedia(storage_path('tmp/uploads/' . $request->input('attachments')))->toMediaCollection('attachments');
+                $ticket->addMedia(storage_path('app/public/uploads/' . $request->input('attachments')))->toMediaCollection('attachments');
             }
         } elseif ($ticket->attachments) {
             $ticket->attachments->delete();
