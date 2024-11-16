@@ -26,13 +26,13 @@ trait MediaUploadingTrait
             ]);
         }
 
-        $path = storage_path('tmp/uploads/');
+        $path = storage_path('app/public/uploads/');
 
         try {
             if (!file_exists($path)) {
                 mkdir($path, 0755, true);
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $e) {return response()->json(['error' => 'Failed to create upload directory'], 500);
         }
 
         $file = $request->file('file');
