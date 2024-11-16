@@ -128,7 +128,7 @@ class TicketsController extends Controller
         $ticket = Ticket::create($request->all());
 
         foreach ($request->input('attachments', []) as $file) {
-            $ticket->addMedia(storage_path('tmp/uploads' . $file))->toMediaCollection('attachments');
+            $ticket->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
         }
 
         return redirect()->route('admin.tickets.index');
@@ -171,7 +171,7 @@ class TicketsController extends Controller
 
         foreach ($request->input('attachments', []) as $file) {
             if (count($media) === 0 || !in_array($file, $media)) {
-                $ticket->addMedia(storage_path('tmp/uploads' . $file))->toMediaCollection('attachments');
+                $ticket->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
             }
         }
 
